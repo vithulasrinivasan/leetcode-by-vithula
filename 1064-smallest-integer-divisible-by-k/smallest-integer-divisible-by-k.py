@@ -4,7 +4,7 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        if k%2 == 0:
+        if k%2 == 0 or k%5==0:
             return -1
         cur=1
         for i in range(1, k+1):
