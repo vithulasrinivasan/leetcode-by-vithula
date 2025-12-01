@@ -6,6 +6,21 @@ class Solution(object):
         :rtype: int
         """
 
+        m = len(batteries)
+        if m == n:
+            return min(batteries)
+        elif m < n:
+            return 0
+        batteries.sort()
+        S = sum(batteries)
+        T = S // n
+        for i in range(1, n):
+            S -= batteries[-i]
+            T = min( T, S // (n-i) )
+        return T
+
+
+        ''' BINARY SEARCH APPROACH
         def isvalid(x,n,batteries):
             running_time=0
             for minute in batteries:
@@ -28,3 +43,4 @@ class Solution(object):
             else:
                 end= mid-1
         return maxTime
+        '''
