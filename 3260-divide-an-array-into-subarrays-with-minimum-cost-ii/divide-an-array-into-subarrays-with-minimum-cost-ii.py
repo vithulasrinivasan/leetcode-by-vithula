@@ -1,5 +1,5 @@
 from sortedcontainers import SortedList
-class Solution:
+class Solution: #sliding window + sorting 
     def minimumCost(self, nums: List[int], k: int, dist: int) -> int:
         n = len(nums)
         sl = SortedList(nums[1:1+dist])
