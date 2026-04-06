@@ -1,0 +1,27 @@
+class Solution(object):
+    def robotSim(self, commands, obstacles):
+        """
+        :type commands: List[int]
+        :type obstacles: List[List[int]]
+        :rtype: int
+        """
+        obs_set= set(map(tuple,obstacles))
+        dirs=[(0,1),(1,0),(0,-1),(-1,0)] # N E S W
+        x,y,dir=0,0,0
+        max_dist=0
+
+        for c in commands:
+            if c==-1:
+                dir= (dir+1) % 4
+            elif c==-2:
+                dir= (dir+3) % 4
+            else:
+                for _ in range(c):
+                    new_x,new_y = x+dirs[dir][0] , y+dirs[dir][1]
+                    if (new_x,new_y) not in obs_set:
+                        x,y=new_x,new_y
+                        max_dist= max(max_dist, x*x + y*y)
+                    else:
+                        break
+        return max_dist
+        
