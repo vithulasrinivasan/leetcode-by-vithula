@@ -1,5 +1,25 @@
 class Solution:
     def minimumDistance(self, nums: List[int]) -> int:
+
+        min_length = len(nums) + 1
+        last_ind = [-1] * min_length
+        second_to_last_ind = [-1] * min_length
+
+        min_dist = math.inf
+
+        for i, num in enumerate(nums):
+            if second_to_last_ind[num] != -1:
+                dist = i - second_to_last_ind[num]
+                if min_dist > dist:
+                    min_dist = dist
+            second_to_last_ind[num] , last_ind[num] = last_ind[num], i
+
+        if min_dist == math.inf:
+            return -1
+        return 2 * min_dist
+
+
+        '''
         pos = {}
         
         for i, num in enumerate(nums):
@@ -19,4 +39,4 @@ class Solution:
         
         return -1 if ans == float('inf') else ans
         
-
+        '''
