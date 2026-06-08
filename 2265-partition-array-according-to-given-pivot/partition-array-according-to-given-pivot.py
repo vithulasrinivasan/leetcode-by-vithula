@@ -10,7 +10,4 @@ class Solution:
             else:
                 greater.append(n)
 
-        less.extend(equal)
-        less.extend(greater)
-
-        return less
+        return less + equal + greater 
